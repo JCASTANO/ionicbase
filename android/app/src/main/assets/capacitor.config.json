@@ -1,0 +1,8 @@
+{
+  "appId": "ionicbase.com",
+  "appName": "ionicbase.com",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "www",
+  "cordova": {}
+}

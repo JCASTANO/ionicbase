@@ -1,0 +1,44 @@
+<ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="end">
+        <ion-button (click)="close()">
+          <ion-icon slot="icon-only" name="close-circle-outline"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content>
+    <form [formGroup]="editForm" (ngSubmit)="edit(editForm.value)">
+      <ion-item>
+        <ion-label>Email</ion-label>
+        <ion-input formControlName="email"></ion-input>
+      </ion-item>
+      <div class="validation-error">
+        <ng-container *ngFor="let validation of validationMessages.email">
+          <div *ngIf="editForm.get('email').hasError(validation.type) && (editForm.get('email').dirty || editForm.get('email').touched)">
+            {{ validation.message }}
+          </div>
+        </ng-container>
+      </div>
+      <ion-item>
+        <ion-label>Avatar</ion-label>
+        <ion-input formControlName="avatar"></ion-input>
+      </ion-item>
+      <div class="validation-error">
+        <ng-container *ngFor="let validation of validationMessages.avatar">
+          <div
+            *ngIf="
+              editForm.get('avatar').hasError(validation.type) && (editForm.get('avatar').dirty || editForm.get('avatar').touched)
+            "
+          >
+            {{ validation.message }}
+          </div>
+        </ng-container>
+      </div>
+      {{ errorMessage }}
+      <ion-button expand="full" shape="round" color="success" [disabled]="!editForm.valid" type="submit">
+        Edit!
+      </ion-button>
+    </form>
+  </ion-content>
